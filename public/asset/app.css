@@ -1,0 +1,523 @@
+* {
+    box-sizing: border-box;
+}
+.blog-post{ 
+padding: 20px;
+}
+.blog-post p{
+color:#000;
+}
+.blog-post h1{
+color:#7a3708;
+}
+.blog-post h2{
+color:#7a3708;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: rgb(2 85 70);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #f1baba;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    font-size: 18px;
+}
+
+
+nav ul li a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.blink {
+    animation: blinker 1.5s linear infinite;
+    color: white;
+    font-family: sans-serif;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.marq {
+    margin: 0;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
+    padding: 5px;
+    text-align: center;
+    max-width: 100%;
+    max-height: 700px;
+    margin: 0 auto;
+}
+
+.card1 {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
+    padding: 5px;
+    text-align: center;
+    max-width: 100%;
+    max-height: 350px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: rgb(2 85 70);
+}
+
+p {
+    color: rgb(2 85 70);
+}
+
+.result {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 4px;
+    animation: blinker 0.5s linear infinite;
+    color: red;
+    font-family: sans-serif;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.result1 {
+    font-weight: bold;
+    font-size: 40px;
+    margin-top: 17px;
+    margin-bottom: 0px;
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: flex;
+        margin: 3px;
+        float: left;
+    }
+
+    nav ul li a {
+        font-weight: bold;
+        text-decoration: none;
+        padding: 5px 10px;
+        background-color: #f1baba;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        font-size: 18px;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+
+    .result1 {
+        font-size: 28px;
+    }
+}
+
+.card-body {
+    box-sizing: border-box;
+    text-align: center;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    border: dashed #ffffff;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: #99999921;
+}
+
+.card-body p {
+    color: #000;
+}
+
+.Wbutton {
+    border: none;
+    color: #FFFFFF;
+    padding: 0px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 0px auto;
+    max-width: 320px;
+}
+
+.table-container {
+    display: flex;
+}
+
+.column {
+    flex: 1;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid rgb(2 85 70);
+}
+
+th {
+    background-color: #fff;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.month_chart {
+    margin: 4px, 4px;
+    padding: 4px;
+}
+
+.Disclaimer {
+    background-color: #fff;
+    text-align: center;
+}
+
+.Disclaimer p {
+    color: black;
+    font: bold;
+    font-size: 14px;
+}
+
+footer {
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    color: #fff;
+    font: bolder;
+}
+
+body {
+    background: #fff
+}
+
+
+.contact {
+    position: relative;
+    background: linear-gradient(0deg, #ffffff 11%, #ffffff 55%, #ffffff 55%, #ffffff 88%);
+    text-align: Center;
+    width: 95%;
+    float: None;
+    clear: Both;
+    opacity: 1;
+    border-radius: 5px 5px 5px 5px;
+    border-top: groove #DEA451 2px;
+    border-right: groove #DEA451 2px;
+    border-bottom: groove #DEA451 2px;
+    border-left: groove #DEA451 2px;
+    padding: 2% 2% 2% 2%;
+    margin: 2% 3% 2% 2%;
+    box-shadow: 4px 4px 0px 0px #E3A041;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: fixed;
+    visibility: hidden;
+    display: none;
+    background-color: rgba(22, 22, 22, 0.5);
+    /* complimenting your modal colors */
+}
+
+#container:target {
+    visibility: visible;
+    display: block;
+}
+
+.reveal-modal {
+    position: relative;
+    margin: 0 auto;
+
+}
+
+@media (min-width: 600px) {
+
+    .reveal-modal {
+        width: 50%;
+    }
+}
+
+.card-body1 p {
+    margin: 0;
+
+}
+
+.card-body1>.Wbutton {
+    padding: 0;
+    margin: auto;
+    width: 40%;
+}
+
+body {
+   
+    font-family: Arial, sans-serif
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0
+}
+
+.head {
+    background-color: red;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    width: auto
+}
+
+a {
+    text-decoration: none
+}
+
+.bar {
+    display: flex
+}
+
+.button {
+    text-align: center;
+    background-color: #f2f2f2;
+    padding: 8px;
+    border-radius: 50px;
+    flex: 1;
+    margin: 5px;
+    font-size: 15px;
+    border: 2px solid #fff
+}
+
+/* .button a {
+    color: #fff
+} */
+
+.time {
+    color: #ff0
+}
+
+.todayboard {
+    font-size: 30px;
+    color: #00f7df
+}
+
+.todayesult {
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    text-align: center
+}
+
+.yesterdaydata {
+    float: left;
+    width: 50%;
+    background: linear-gradient(to bottom, #ff0000, #030228);
+    border: outset rgb(255 255 255) 3px;
+    padding: 10px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px
+}
+
+table {
+    width: 100%;
+    color: #000;
+    text-align: center;
+    border-collapse: collapse;
+    background-color: #fff;
+    border: solid;
+    border-color: #ff0000ed
+}
+
+.my-table td {
+    border: 1px solid
+}
+
+.article {
+    background: #fff;
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: justify
+}
+
+.gamename {
+    background-color: red;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0 2px
+}
+
+.side {
+    background-color: red;
+    font-size: 12px;
+    color: #fff
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+.number-background {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 25px;
+    background-color: #fdffd4;
+    border-radius: 50px
+}
+
+.resultnumber {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red !important;
+    font-size: 20px
+}
+
+.displayname {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding-left: 2px;
+    padding-right: 2px"
+
+}
+
+.refreshButton {
+    text-decoration: none;
+    padding: 4px 8px;
+    background-color: WHITE;
+    color: #30051c;
+    border-width: 4px;
+    border-color: red;
+    border-style: inset;
+    font-weight: 700;
+    font-size: 1.5em;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 70px;
+    right: 10px
+}
+
+
+.sticky-col {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+}
+
+.header-cell {
+    background: red;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Red background for first column */
+.first-col {
+    background: red;
+    color: white;
+    font-weight: bold;
+    width: 66px;
+}
+
+.month_chart {
+    overflow-x: auto;
+    max-width: 100%;
+    position: relative;
+}
+
+table {
+    border-collapse: collapse;
+
+    /* or however wide your table is */
+}
+
+#table {
+    overflow: auto;
+}
+
+/* Add WA floating button CSS */
+.floating {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+}
+
+.fab-icon {
+    margin-top: 16px;
+}
