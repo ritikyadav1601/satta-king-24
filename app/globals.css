@@ -616,24 +616,31 @@ select {
 }
 
 .blog-post,
-.faq-section {
+.faq-section,
+.disclaimer-section {
   margin: 0 auto;
   max-width: 900px;
   padding: 16px;
+  text-align: left;
+  width: 100%;
 }
 
 .blog-post h1,
 .blog-post h2,
-.faq-section h2 {
+.faq-section h2,
+.disclaimer-section h2 {
   color: #111;
-  text-align: center;
+  text-align: left;
 }
 
 .blog-post p,
-.faq-item p {
+.faq-item p,
+.disclaimer-section p {
   color: #333;
   line-height: 1.65;
-  text-align: justify;
+  text-align: left;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .faq-item {
@@ -811,6 +818,8 @@ select {
   margin: 16px auto;
   max-width: 900px;
   padding: 16px;
+  overflow-wrap: anywhere;
+  width: 100%;
 }
 
 .sk24-simple-page h1 {
@@ -830,7 +839,8 @@ select {
   color: #333;
   line-height: 1.65;
   margin: 0 0 16px;
-  text-align: justify;
+  text-align: left;
+  word-break: break-word;
 }
 
 .sk24-contact-card {
@@ -887,7 +897,12 @@ select {
 }
 
 .blog-detail-content {
-  padding: 10px 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  padding: 10px 16px;
+  text-align: left;
+  width: 100%;
+  word-break: break-word;
 }
 
 .blog-detail-content h1,
@@ -898,9 +913,58 @@ select {
 .blog-detail-content h6 {
   font-size: 2em;
   font-weight: inherit;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.blog-detail-content p,
+.blog-detail-content li,
+.blog-detail-content div {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: left;
+  word-break: break-word;
 }
 
 .blog-detail-content img {
+  display: block;
   height: auto;
   max-width: 100%;
+}
+
+.blog-detail-content table,
+.blog-detail-content pre,
+.blog-detail-content iframe {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@media (max-width: 600px) {
+  .blog-post,
+  .faq-section,
+  .disclaimer-section,
+  .sk24-simple-page,
+  .blog-detail-content {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .blog-post h1,
+  .blog-detail-content h1 {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+
+  .blog-post h2,
+  .faq-section h2,
+  .disclaimer-section h2,
+  .blog-detail-content h2,
+  .blog-detail-content h3,
+  .blog-detail-content h4,
+  .blog-detail-content h5,
+  .blog-detail-content h6 {
+    font-size: 20px;
+    line-height: 1.3;
+  }
 }

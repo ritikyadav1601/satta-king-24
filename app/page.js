@@ -191,7 +191,7 @@ function SeoContent() {
         <div className="faq-item"><h3>6. Which Satta King number is the most likely to win?</h3><p>There is no specific number that is most likely to win because the result is random. Any number between 00 and 99 can be declared as the winning number.</p></div>
         <div className="faq-item"><h3>7. How to predict Satta King 24 number?</h3><p>Some people try to predict numbers by analyzing old charts and past results, but these predictions are not guaranteed to be correct.</p></div>
       </section>
-      <section className="disclaimer-section">
+      <section className="disclaimer-section p-3">
         <h2>Disclaimer</h2>
         <p>Satta King and related activities may be illegal in some regions. This website is for informational and entertainment purposes only and does not promote or support gambling. Users are responsible for how they use the information provided.</p>
       </section>
