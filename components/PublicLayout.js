@@ -34,7 +34,7 @@ export default async function PublicLayout({ children }) {
         <div className="button"><Link href="/contact">Contact Us</Link></div>
       </footer>
       <a href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(khaiwal)}`} id="wa" className="floating" target="_blank" rel="noreferrer" aria-label="WhatsApp">
-        <i className="fa fa-whatsapp fab-icon"></i>
+        <img src="/asset/whatsapp.png" alt="" width="36" height="36" aria-hidden="true" />
       </a>
     </>
   );

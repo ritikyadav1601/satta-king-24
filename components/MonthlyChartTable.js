@@ -28,7 +28,10 @@ function displayGameName(game) {
     "makka-madina": "MM",
     ghaziabad: "GZBD",
     "kalka night": "KLKN",
-    gali: "GALI"
+    gali: "GALI",
+    fatehabad: "FTHBD",
+    alwar: "ALWAR",
+    "shakti peeth": "SKTP"
   };
 
   return shortNames[normalized] || name.toUpperCase();
@@ -72,19 +75,15 @@ function monthLabel(dateKey, offset) {
 }
 
 export default function MonthlyChartTable({ title, rows, columns, dateKey, chunkSize = 10 }) {
-  const desktopChunks = chunkColumns(columns, chunkSize);
-  const mobileChunks = chunkColumns(columns, 6);
+  const chunks = chunkColumns(columns, chunkSize);
   const chartDateKey = dateKey || new Date().toISOString().slice(0, 10);
 
   return (
     <div className="chart">
       <div className="satta-table-container">
         <h2 className="align" style={{ color: "#000" }}>{title}</h2>
-        <div className="table-wrapper monthly-chart-desktop mb-8">
-          <ChartTables rows={rows} chunks={desktopChunks} />
-        </div>
-        <div className="table-wrapper monthly-chart-mobile mb-8">
-          <ChartTables rows={rows} chunks={mobileChunks} />
+        <div className="table-wrapper monthly-chart-responsive mb-8">
+          <ChartTables rows={rows} chunks={chunks} />
         </div>
         <div className="monthly-chart-nav">
           <Link className="monthly-chart-nav-btn" href={monthLink(chartDateKey, -1)}>

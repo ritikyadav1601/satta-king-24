@@ -95,11 +95,11 @@ select {
   z-index: 100;
 }
 
-.fab-icon {
-  display: inline-block;
-  height: auto;
-  width: auto;
-  margin-top: 16px;
+.floating img {
+  display: block;
+  height: 36px;
+  margin: 12px auto 0;
+  width: 36px;
 }
 
 .admin-form input,
@@ -728,9 +728,14 @@ select {
 .blog-post h1,
 .blog-post h2,
 .faq-section h2,
+.faq-item h3,
 .disclaimer-section h2 {
-  color: #111;
+  color: #7a3708;
   text-align: left;
+}
+
+.faq-section h2 {
+  margin-bottom: 18px;
 }
 
 .blog-post p,
@@ -748,6 +753,7 @@ select {
 }
 
 .faq-item h3 {
+  color: #7a3708;
   font-size: 18px;
   margin-bottom: 6px;
 }

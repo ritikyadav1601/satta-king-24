@@ -30,7 +30,6 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="/asset/app.css" />
         <link rel="stylesheet" href="/asset/newcss.css" />
         <link rel="stylesheet" href="/asset/boostrapp.css" />
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
