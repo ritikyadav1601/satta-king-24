@@ -1,7 +1,8 @@
 import Link from "next/link";
 import MonthlyChartTable from "@/components/MonthlyChartTable";
 import PublicLayout from "@/components/PublicLayout";
-import { getAds, getGamesWithTodayResults, getMonthlyRows, getTopGames } from "@/lib/data";
+import { getGamesWithTodayResults, getMonthlyRows, getTopGames } from "@/lib/data";
+import { DEFAULT_CONTACT_NUMBER, DEFAULT_KHAIWAL_NAME } from "@/lib/contactDefaults";
 import { formatTime, istDate, monthName } from "@/lib/utils";
 
 export const revalidate = 30;
@@ -45,6 +46,19 @@ const liveGameOrder = [
 ];
 
 const liveFeaturedMids = new Set([3, 10]);
+const khaiwalSchedule = [
+  ["शिवधाम", "01:20 PM"],
+  ["पुष्कर बाजार", "02:20 PM"],
+  ["दिल्ली मेट्रो", "03:00 PM"],
+  ["श्री श्याम", "04:10 PM"],
+  ["कोलंबिया", "05:00 PM"],
+  ["फरीदाबाद", "05:50 PM"],
+  ["मक्का मदीना", "07:20 PM"],
+  ["गाज़ियाबाद", "08:20 PM"],
+  ["कालका नाइट", "09:50 PM"],
+  ["गली", "11:20 PM"],
+  ["दिसावर", "03:20 AM"]
+];
 
 function orderLikeLiveSite(games) {
   const order = new Map(liveGameOrder.map((name, index) => [name, index]));
@@ -143,19 +157,46 @@ function GameBoard({ games }) {
   );
 }
 
-function PlayBlock({ ad, full = false }) {
+function PlayBlock({ full = false }) {
+  const name = DEFAULT_KHAIWAL_NAME;
+  const pay = DEFAULT_CONTACT_NUMBER;
+  const whatsapp = DEFAULT_CONTACT_NUMBER;
+
   return (
-    <div id="kha" className="card-body">
+    <div id="kha" className="card-body sk24-khaiwal-card">
       {full ? (
-        <>
-          <p><strong>बिंदास गेम प्ले कर सकते हो आप बिना किसी टेंशन के</strong></p>
-          <p><strong>♕♕ {ad?.khaiwalName || ""} ♕♕</strong></p>
-          <p><strong>💸 Payment Option 💸</strong><br />PAYTM//BANK TRANSFER//PHONE PAY//GOOGLE PAY =&gt;<strong>{ad?.gpayNumber || ""}</strong></p>
-          <p><strong>🤑 Rate list 💸</strong><br /><strong>जोड़ी रेट 10-------960</strong><br /><strong>हरूफ रेट 100-----960</strong></p>
-        </>
+        <div className="sk24-khaiwal-copy">
+          <p>बिंदास गेम प्ले कर सकते हो आप बिना किसी टेंशन के</p>
+          <p className="sk24-khaiwal-name">♕♕{name} ♕♕</p>
+          <div className="sk24-khaiwal-schedule">
+            {khaiwalSchedule.map(([game, time]) => (
+              <div className="sk24-khaiwal-row" key={game}>
+                <span>⏰ {game}</span>
+                <span className="sk24-khaiwal-dots" aria-hidden="true"></span>
+                <span>{time}</span>
+              </div>
+            ))}
+          </div>
+          <p className="sk24-khaiwal-payment">
+            💸 Payment Option 💸<br />
+            PAYTM//BANK TRANSFER//PHONE PAY//GOOGLE PAY =&gt;{pay}
+          </p>
+          <p className="sk24-khaiwal-separator">
+            =====================================<br />
+            👉 {pay}👈<br />
+            =====================================
+          </p>
+          <p className="sk24-khaiwal-rate">
+            🤑 Rate list 💸<br />
+            जोड़ी रेट 10-------960<br />
+            <br />
+            हरूफ रेट 100-----960
+          </p>
+          <p className="sk24-khaiwal-name">♕♕ {name}♕♕</p>
+        </div>
       ) : null}
       <p><strong>Game play करने के लिये नीचे लिंक पर क्लिक करे</strong></p>
-      <a href={`https://wa.me/+${ad?.whatsappNumber || ""}`} className="Wbutton">
+      <a href={`https://wa.me/${whatsapp}`} className="Wbutton">
         <img loading="lazy" width="100%" src="/asset/whatsapp.png" alt="Whatsapp to Play Game" />
       </a>
     </div>
@@ -218,8 +259,7 @@ function liveClockText() {
 }
 
 export default async function HomePage() {
-  const [ads, games] = await Promise.all([getAds(), getGamesWithTodayResults()]);
-  const ad = ads[0] || {};
+  const games = await getGamesWithTodayResults();
   const liveGames = orderLikeLiveSite(games);
   const monthly = await getMonthlyRows({ untilToday: true, games: liveGames });
   const topGames = await getTopGames(liveGames);
@@ -238,7 +278,7 @@ export default async function HomePage() {
           <ResultHighlight game={topGames[0]} />
         </div>
         {featured.map((game) => <FeaturedResult key={game._id} game={game} />)}
-        <PlayBlock ad={ad} />
+        <PlayBlock />
         <section className="grid grid-cols-1 gap-2 bg-white lg:grid-cols-1">
           <div className="text-center text-black px-4 py-2 shadow-xl bg-yellow-50 border pt-4 mx-2 my-2 rounded-xl leading-6 font-semibold h-fit px-0 mx-0 pt-2 py-2 leading-6 border-transparent rounded-none font-normal shadow none text-lg">
             <h3>To Check instant SATTA KING 24 Results, Check Below Chart 👇🏿</h3>
@@ -246,7 +286,7 @@ export default async function HomePage() {
         </section>
         <h3 className="py-2 text-sm font-semibold text-center text-gray-900 bg-white">FASTEST SATTA KING RESULT SITE ON INTERNET</h3>
         <GameBoard games={liveGames} />
-        <PlayBlock ad={ad} full />
+        <PlayBlock full />
         <MonthlyChartTable title={`Satta King Record Chart ${monthName(today)}`} rows={monthly.rows} columns={monthly.gameColumns} dateKey={today} chunkSize={4} />
         <SeoContent />
       </main>

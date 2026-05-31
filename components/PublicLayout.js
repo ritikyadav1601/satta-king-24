@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { getAds, getContact } from "@/lib/data";
+import { DEFAULT_CONTACT_NUMBER, DEFAULT_KHAIWAL_NAME } from "@/lib/contactDefaults";
 
 export default async function PublicLayout({ children }) {
-  const [contact, ads] = await Promise.all([getContact(), getAds()]);
-  const ad = ads[0] || {};
-  const whatsapp = ad.whatsappNumber || contact?.contactNumber || "";
-  const khaiwal = ad.khaiwalName || contact?.name || "";
+  const whatsapp = DEFAULT_CONTACT_NUMBER;
+  const khaiwal = DEFAULT_KHAIWAL_NAME;
 
   return (
     <>
@@ -20,7 +18,7 @@ export default async function PublicLayout({ children }) {
         <nav className="bg-white">
           <div className="px-4 py-3 mx-auto md:px-6"><div className="flex items-center justify-center"><ul className="flex flex-row mt-2 mr-6 space-x-8 text-sm font-medium">
             <li><Link className="text-gray-900 hover:underline" href="/chart">Chart</Link></li>
-            <li><a target="_blank" rel="noopener noreferrer" href={`https://wa.me/+${whatsapp}`} className="text-gray-900 hover:underline">Play Now</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href={`https://wa.me/${whatsapp}`} className="text-gray-900 hover:underline">Play Now</a></li>
             <li><Link className="text-gray-900 hover:underline" href="/payment-proofs">Payment Proof</Link></li>
           </ul></div></div>
         </nav>

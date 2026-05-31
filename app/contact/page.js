@@ -1,5 +1,6 @@
 import PublicLayout from "@/components/PublicLayout";
 import { getContact } from "@/lib/data";
+import { normalizeWhatsAppNumber } from "@/lib/contactDefaults";
 
 export const revalidate = 300;
 export const metadata = { title: "Contact Us - Satta King 24" };
@@ -7,7 +8,7 @@ export const metadata = { title: "Contact Us - Satta King 24" };
 export default async function ContactPage() {
   const contact = await getContact();
   const name = contact?.name || "Satta King 24";
-  const number = contact?.contactNumber || "";
+  const number = normalizeWhatsAppNumber(contact?.contactNumber);
   return (
     <PublicLayout>
       <main className="sk24-simple-page">
@@ -16,7 +17,7 @@ export default async function ContactPage() {
           <p><strong>अपनी गेम का रिजल्ट हमारी web साइट पर लगवाने के लिए संपर्क करें।</strong></p>
           <p><strong>----{name} ----</strong></p>
           {number ? (
-            <p><a target="_blank" rel="noreferrer" href={`https://wa.me/+${number}?text=${encodeURIComponent(name)}`}><img loading="lazy" src="/asset/whatsapp.png" alt="Whatsapp to show game on this website" /></a></p>
+            <p><a target="_blank" rel="noreferrer" href={`https://wa.me/${number}?text=${encodeURIComponent(name)}`}><img loading="lazy" src="/asset/whatsapp.png" alt="Whatsapp to show game on this website" /></a></p>
           ) : null}
           <p>NOTE: इस नंबर पर लीक गेम नही मिलता गेम लेने वाले भाई कॉल या मैसेज न करें।</p>
         </div>
