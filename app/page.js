@@ -283,7 +283,7 @@ export default async function HomePage() {
     <PublicLayout>
       <main>
         <div className="max-w-screen-xl px-4 mx-auto md:px-6" style={{ padding: "15px" }}>
-          <h1 className="text-lg font-bold text-center text-gray-900 uppercase">Satta King 24 | Fast Live Result Chart 2026</h1>
+          <h1 className="text-lg font-bold text-center text-gray-900 uppercase">Welcome to Satta King 24 | Fast Live Result Chart 2026</h1>
         </div>
         <div className="py-2 text-lg font-bold text-center text-black bg-white digital-clock">{liveClockText()}</div>
         <div className="w-full mx-auto mb-3 bg-black pb-2 overflow-hidden">
