@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <title>Satta King 24 Fast Result Today | Live Chart & Leak Number</title>
-        <meta name="google-site-verification" content="sRMc1_4zQgi8Wk2tgvLDx8zT2z28lC5w7x1F0hkGvxg" />
+        <meta name="google-site-verification" content="RyOErpCLdPJqTB3jfG_mF8k_bQD-oRD4CzhvGUknWBY" />
         <link rel="stylesheet" href="/asset/app.css" />
         <link rel="stylesheet" href="/asset/newcss.css" />
         <link rel="stylesheet" href="/asset/boostrapp.css" />
