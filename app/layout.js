@@ -8,7 +8,7 @@ export const metadata = {
   description: "Check Satta King result today fast and easy. Get Gali, Desawar, Faridabad live result, daily number update and full old chart in simple format.",
   alternates: { canonical: "/" },
   verification: {
-    google: "RyOErpCLdPJqTB3jfG_mF8k_bQD-oRD4CzhvGUknWBY"
+    google: "7LwtpJQZkEJkLqgrpEWZop9h1cqLynVIjz7DEufuEXg"
   },
   openGraph: {
     title: "Gali Result | Satta king 24| Satta gali | Satta result | desawar result | satta king 24",
@@ -29,6 +29,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <title>Satta King 24 Fast Result Today | Live Chart & Leak Number</title>
+        <meta name="google-site-verification" content="7LwtpJQZkEJkLqgrpEWZop9h1cqLynVIjz7DEufuEXg" />
         <link rel="stylesheet" href="/asset/app.css" />
         <link rel="stylesheet" href="/asset/newcss.css" />
         <link rel="stylesheet" href="/asset/boostrapp.css" />
