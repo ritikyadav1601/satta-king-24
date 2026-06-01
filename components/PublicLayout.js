@@ -35,7 +35,7 @@ export default async function PublicLayout({ children, contact: providedContact 
         <div className="button"><Link href="/faq">FAQ</Link></div>
         <div className="button"><Link href="/contact">Contact Us</Link></div>
       </footer>
-      <a href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(khaiwal)}`} id="wa" className="floating" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+      <a href={`https://wa.me/917027759707?text=Rohit%20bhai`} id="wa" className="floating" target="_blank" rel="noreferrer" aria-label="WhatsApp">
         <img src="/asset/WhatsApp_icon.png.webp" alt="" width="150" height="52" aria-hidden="true" />
       </a>
     </>
