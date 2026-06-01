@@ -12,5 +12,6 @@ const GameResultSchema = new mongoose.Schema(
 );
 
 GameResultSchema.index({ game: 1, resultDate: 1 }, { unique: true });
+GameResultSchema.index({ resultDate: 1, createdAt: 1 });
 
 export default mongoose.models.GameResult || mongoose.model("GameResult", GameResultSchema);

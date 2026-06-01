@@ -280,8 +280,10 @@ export default async function HomePage() {
   ]);
   const primaryAd = ads[0] || {};
   const liveGames = orderLikeLiveSite(games);
-  const monthly = await getMonthlyRows({ untilToday: true, games: liveGames });
-  const topGames = await getTopGames(liveGames);
+  const [monthly, topGames] = await Promise.all([
+    getMonthlyRows({ untilToday: true, games: liveGames }),
+    getTopGames(liveGames)
+  ]);
   const featured = pickFeatured(liveGames);
   const today = istDate();
 
