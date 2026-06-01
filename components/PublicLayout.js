@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { DEFAULT_CONTACT_NUMBER, DEFAULT_KHAIWAL_NAME } from "@/lib/contactDefaults";
+import { getContact } from "@/lib/data";
+import { normalizeWhatsAppNumber } from "@/lib/contactDefaults";
 
-export default async function PublicLayout({ children }) {
-  const whatsapp = DEFAULT_CONTACT_NUMBER;
-  const khaiwal = DEFAULT_KHAIWAL_NAME;
+export default async function PublicLayout({ children, contact: providedContact }) {
+  const contact = providedContact || (await getContact());
+  const whatsapp = normalizeWhatsAppNumber(contact?.contactNumber);
+  const khaiwal = contact?.name || "";
 
   return (
     <>

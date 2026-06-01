@@ -1,23 +1,24 @@
-import { DEFAULT_CONTACT_NUMBER, DEFAULT_KHAIWAL_NAME } from "@/lib/contactDefaults";
+import { DEFAULT_CONTACT_NUMBER, DEFAULT_KHAIWAL_NAME, normalizeWhatsAppNumber } from "@/lib/contactDefaults";
 
 const khaiwalSchedule = [
   ["शिवधाम", "01:20 PM"],
   ["पुष्कर बाजार", "02:20 PM"],
   ["दिल्ली मेट्रो", "03:00 PM"],
   ["श्री श्याम", "04:10 PM"],
+  ["श्री गणेश", "04:20 PM"],
   ["कोलंबिया", "05:00 PM"],
-  ["फरीदाबाद", "05:50 PM"],
+  ["फरीदाबाद", "06:00 PM"],
   ["मक्का मदीना", "07:20 PM"],
-  ["गाज़ियाबाद", "08:20 PM"],
+  ["गाज़ियाबाद", "09:20 PM"],
   ["कालका नाइट", "09:50 PM"],
   ["गली", "11:20 PM"],
-  ["दिसावर", "03:20 AM"]
+  ["दिसावर", "04:00 AM"]
 ];
 
-export default function AdBlock() {
-  const name = DEFAULT_KHAIWAL_NAME;
-  const pay = DEFAULT_CONTACT_NUMBER;
-  const whatsapp = DEFAULT_CONTACT_NUMBER;
+export default function AdBlock({ ad } = {}) {
+  const name = ad?.khaiwalName || DEFAULT_KHAIWAL_NAME;
+  const pay = ad?.gpayNumber || DEFAULT_CONTACT_NUMBER;
+  const whatsapp = normalizeWhatsAppNumber(ad?.whatsappNumber || DEFAULT_CONTACT_NUMBER);
 
   return (
     <>
