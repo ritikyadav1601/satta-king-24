@@ -744,6 +744,7 @@ select {
 
 .blog-post h1,
 .blog-post h2,
+.blog-post h3,
 .faq-section h2,
 .faq-item h3,
 .disclaimer-section h2 {
@@ -755,6 +756,30 @@ select {
   margin-bottom: 18px;
 }
 
+.blog-post .faq-section {
+  margin: 22px 0;
+  max-width: none;
+  padding: 0;
+}
+
+.blog-post .faq-section h2 {
+  font-size: 20px;
+  line-height: 1.35;
+  margin: 0 0 14px;
+}
+
+.blog-post .faq-section h3 {
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 14px 0 6px;
+}
+
+.blog-post .faq-section p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+
 .blog-post p,
 .faq-item p,
 .disclaimer-section p {
@@ -763,6 +788,16 @@ select {
   text-align: left;
   overflow-wrap: anywhere;
   word-break: break-word;
+}
+
+.blog-post blockquote {
+  background: #fff8db;
+  border-left: 4px solid #d97706;
+  color: #333;
+  line-height: 1.65;
+  margin: 16px 0;
+  padding: 12px 14px;
+  text-align: left;
 }
 
 .faq-item {
