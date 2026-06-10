@@ -1127,8 +1127,4 @@ select {
   }
 }
 
-.blog-post,
-.faq-section {
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-}
+
