@@ -1,11 +1,12 @@
 import Link from "next/link";
+import Clock from "@/components/Clock";
 import MonthlyChartTable from "@/components/MonthlyChartTable";
 import PublicLayout from "@/components/PublicLayout";
 import { getAds, getContact, getGamesWithTodayResults, getMonthlyRows, getTopGames } from "@/lib/data";
 import { DEFAULT_CONTACT_NUMBER, DEFAULT_KHAIWAL_NAME, normalizeWhatsAppNumber } from "@/lib/contactDefaults";
 import { formatTime, istDate, monthName } from "@/lib/utils";
 
-export const revalidate = 30;
+export const revalidate = 1;
 
 export const metadata = {
   title: "Satta King 24 | Fast Satta King Result Today | Live Chart 2026",
@@ -290,24 +291,6 @@ function SeoContent() {
   );
 }
 
-function liveClockText() {
-  const now = new Date();
-  const date = new Intl.DateTimeFormat("en-US", {
-    timeZone: "Asia/Kolkata",
-    month: "long",
-    day: "numeric",
-    year: "numeric"
-  }).format(now);
-  const time = new Intl.DateTimeFormat("en-US", {
-    timeZone: "Asia/Kolkata",
-    hour: "numeric",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: true
-  }).format(now);
-  return `${date} ${time}`;
-}
-
 export default async function HomePage() {
   const [ads, contact, games] = await Promise.all([
     getAds(),
@@ -329,7 +312,7 @@ export default async function HomePage() {
         <div className="max-w-screen-xl px-4 mx-auto md:px-6" style={{ padding: "15px" }}>
           <h1 className="text-lg font-bold text-center text-gray-900 uppercase">Satta King 2026 | Satta King Result | Live Satta King Chart</h1>
         </div>
-        <div className="py-2 text-lg font-bold text-center text-black bg-white digital-clock">{liveClockText()}</div>
+        <Clock className="digital-clock" />
         <div className="w-full mx-auto mb-3 bg-black pb-2 overflow-hidden">
           <ResultHighlight game={topGames[1]} pending />
           <ResultHighlight game={topGames[0]} />
