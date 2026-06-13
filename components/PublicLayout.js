@@ -20,7 +20,7 @@ export default async function PublicLayout({ children, contact: providedContact 
         <nav className="bg-white">
           <div className="px-4 py-3 mx-auto md:px-6"><div className="flex items-center justify-center"><ul className="flex flex-row mt-2 mr-6 space-x-8 text-sm font-medium">
             <li><Link className="text-gray-900 hover:underline" href="/chart">Chart</Link></li>
-            <li><a target="_blank" rel="noopener noreferrer" href={`https://wa.me/${whatsapp}`} className="text-gray-900 hover:underline">Play Now</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href={`https://wa.me/919588518047`} className="text-gray-900 hover:underline">Play Now</a></li>
             <li><Link className="text-gray-900 hover:underline" href="/payment-proofs">Payment Proof</Link></li>
           </ul></div></div>
         </nav>
@@ -35,7 +35,7 @@ export default async function PublicLayout({ children, contact: providedContact 
         <div className="button"><Link href="/faq">FAQ</Link></div>
         <div className="button"><Link href="/contact">Contact Us</Link></div>
       </footer>
-      <a href={`https://wa.me/917027759707?text=Rohit%20bhai`} id="wa" className="floating" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+      <a href={`https://wa.me/919588518047?text=Rahul%20bhai`} id="wa" className="floating" target="_blank" rel="noreferrer" aria-label="WhatsApp">
         <img src="/asset/WhatsApp_icon.png.webp" alt="" width="150" height="52" aria-hidden="true" />
       </a>
     </>

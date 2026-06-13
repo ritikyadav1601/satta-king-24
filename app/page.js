@@ -169,7 +169,7 @@ function PlayBlock({ ad, full = false }) {
       {full ? (
         <div className="sk24-khaiwal-copy">
           <p>बिंदास गेम प्ले कर सकते हो आप बिना किसी टेंशन के</p>
-          <p className="sk24-khaiwal-name">♕♕ ROHIT BHAI ♕♕</p>
+          <p className="sk24-khaiwal-name">♕♕ RAHUL BHAI ♕♕</p>
           <div className="sk24-khaiwal-schedule">
             {khaiwalSchedule.map(([game, time]) => (
               <div className="sk24-khaiwal-row" key={game}>
@@ -181,11 +181,11 @@ function PlayBlock({ ad, full = false }) {
           </div>
           <p className="sk24-khaiwal-payment">
             💸 Payment Option 💸<br />
-            PAYTM//BANK TRANSFER//PHONE PAY//GOOGLE PAY =&gt;7027759707
+            PAYTM//BANK TRANSFER//PHONE PAY//GOOGLE PAY =&gt;9588518047
           </p>
           <p className="sk24-khaiwal-separator">
             =====================================<br />
-            👉 7027759707👈<br />
+            👉 9588518047👈<br />
             =====================================
           </p>
           <p className="sk24-khaiwal-rate">
@@ -198,7 +198,7 @@ function PlayBlock({ ad, full = false }) {
         </div>
       ) : null}
       <p><strong>Game play करने के लिये नीचे लिंक पर क्लिक करे</strong></p>
-      <a href={`https://wa.me/917027759707`} className="Wbutton">
+      <a href={`https://wa.me/919588518047`} className="Wbutton">
         <img loading="lazy" width="100%" src="/asset/whatsapp.png" alt="Whatsapp to Play Game" />
       </a>
     </div>
