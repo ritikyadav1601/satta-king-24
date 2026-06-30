@@ -398,8 +398,8 @@ export default async function HomePage() {
         </div>
         <Clock className="digital-clock" />
         <div className="w-full mx-auto mb-3 bg-black pb-2 overflow-hidden">
-          <ResultHighlight game={topGames[1]} pending />
-          <ResultHighlight game={topGames[0]} />
+          <ResultHighlight game={topGames[0]} pending />
+          <ResultHighlight game={topGames[1]} />
         </div>
         {featured.map((game) => <FeaturedResult key={game._id} game={game} />)}
         <PlayBlock ad={primaryAd} />
