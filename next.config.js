@@ -2,6 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "satta-king-24.com" }],
+        destination: "https://www.satta-king-24.com/:path*",
+        permanent: true
+      }
+    ];
+  },
   async headers() {
     return [
       {
