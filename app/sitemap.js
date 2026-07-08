@@ -1,9 +1,37 @@
 import { blogList } from "@/lib/blogData";
-import { getMonthlyRows } from "@/lib/data";
-import { shortMonthYear, slugify } from "@/lib/utils";
+import { shortMonthYear } from "@/lib/utils";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.satta-king-24.com";
 const startYear = 2022;
+const marketSlugs = [
+  "desawer",
+  "gali",
+  "ghaziabad",
+  "faridabad",
+  "delhi-bazar",
+  "shri-ganesh",
+  "shiv-dham",
+  "pushkar-bazar",
+  "delhi-metro",
+  "shri-sayam",
+  "kolmbia",
+  "makka-madina",
+  "kalka-night",
+  "shirdi-dham",
+  "sadar-bazar",
+  "delhi-darbar",
+  "kaliyar",
+  "gwalior",
+  "new-ganga",
+  "delhi-matka",
+  "agra",
+  "fatehabad",
+  "alwar",
+  "shakti-peeth",
+  "mandi-bazar",
+  "mathura",
+  "dwarka"
+];
 
 function cleanSiteUrl(path = "") {
   return `${siteUrl.replace(/\/$/, "")}${path}`;
@@ -33,24 +61,10 @@ function monthKeys(fromYear, toDate) {
   return keys;
 }
 
-function isRealResult(value) {
-  const result = String(value || "").trim().toUpperCase();
-  return result !== "" && result !== "-" && result !== "XX";
-}
-
-function columnHasData(rows = [], column = "") {
-  return rows.some((row) => isRealResult(row[column]));
-}
-
-function displayNameFromColumn(column = "") {
-  return column.replaceAll("_", " ").trim();
-}
-
-export default async function sitemap() {
+export default function sitemap() {
   const now = new Date();
   const currentYear = now.getFullYear();
   const months = monthKeys(startYear, now);
-  const marketSlugs = new Set();
 
   const urls = [
     sitemapEntry("", now, "daily", 1),
@@ -69,21 +83,12 @@ export default async function sitemap() {
   }
 
   for (const dateKey of months) {
-    const year = Number(dateKey.slice(0, 4));
-    const month = Number(dateKey.slice(5, 7));
-    const monthly = await getMonthlyRows({ year, month, untilToday: false });
     const label = shortMonthYear(dateKey);
     const isCurrentMonth = dateKey.slice(0, 7) === now.toISOString().slice(0, 7);
-    const columnsWithData = monthly.gameColumns.filter((column) => columnHasData(monthly.rows, column));
 
-    if (columnsWithData.length) {
-      urls.push(sitemapEntry(`/chart/result-chart-${label}`, now, isCurrentMonth ? "daily" : "monthly", 0.75));
-    }
+    urls.push(sitemapEntry(`/chart/result-chart-${label}`, now, isCurrentMonth ? "daily" : "monthly", 0.75));
 
-    for (const column of columnsWithData) {
-      const marketSlug = slugify(displayNameFromColumn(column));
-      if (!marketSlug) continue;
-      marketSlugs.add(marketSlug);
+    for (const marketSlug of marketSlugs) {
       urls.push(sitemapEntry(`/chart/${marketSlug}-result-chart-${label}`, now, isCurrentMonth ? "daily" : "monthly", 0.7));
     }
   }
