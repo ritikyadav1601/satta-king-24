@@ -8,13 +8,26 @@ import { formatTime, istDate, monthName } from "@/lib/utils";
 
 export const revalidate = 1;
 
-export const metadata = {
-  title: "Satta King 24 | Desawar, Gali, Faridabad, Ghaziabad Chart & Records",
-  description: "Explore Satta King 24 for Desawar, Gali, Faridabad, Ghaziabad, Delhi Bazar, Delhi Metro, Shri Ganesh, Shiv Dham, Pushkar Bazar chart records, market information and daily updates from popular markets.",
-  alternates: {
-    canonical: "https://www.satta-king-24.com",
-  },
-};
+function formatSeoDate(date = new Date()) {
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Kolkata",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  }).format(date);
+}
+
+export function generateMetadata() {
+  const currentDate = formatSeoDate();
+
+  return {
+    title: `Satta King Result ${currentDate} | Live Updates, Chart & Record`,
+    description: `Get the latest Satta King Result for ${currentDate} with live updates, chart history, and daily records. Explore accurate information at Satta-King-24.com.`,
+    alternates: {
+      canonical: "https://www.satta-king-24.com",
+    },
+  };
+}
 
 function ResultText({ value }) {
   const pending = String(value).toUpperCase() === "XX";

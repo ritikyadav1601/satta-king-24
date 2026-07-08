@@ -6,7 +6,6 @@ export const metadata = {
   metadataBase: new URL(siteUrl),
   title: "Satta King 24 Fast Result Today | Live Chart & Leak Number",
   description: "Check Satta King result today fast and easy. Get Gali, Desawar, Faridabad live result, daily number update and full old chart in simple format.",
-  alternates: { canonical: siteUrl },
   verification: {
     google: "7LwtpJQZkEJkLqgrpEWZop9h1cqLynVIjz7DEufuEXg"
   },

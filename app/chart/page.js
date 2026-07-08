@@ -8,7 +8,8 @@ export const revalidate = 30;
 
 export const metadata = {
   title: "Satta King Chart 2026 with Old Record - Satta King 24",
-  description: "Check Satta King Chart 2026 with full old record. Get Gali, Desawar, Faridabad all market charts, past results and daily updates in simple format."
+  description: "Check Satta King Chart 2026 with full old record. Get Gali, Desawar, Faridabad all market charts, past results and daily updates in simple format.",
+  alternates: { canonical: "/chart" }
 };
 
 const marketDetails = [

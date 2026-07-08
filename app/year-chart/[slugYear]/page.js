@@ -1,7 +1,31 @@
 import PublicLayout from "@/components/PublicLayout";
 import { getYearChartRows } from "@/lib/data";
+import { slugify } from "@/lib/utils";
 
 export const revalidate = 300;
+
+function parseYearChartSlug(slugYear = "") {
+  const match = decodeURIComponent(slugYear).match(/^(.+)-result-chart-(\d{4})$/);
+  const slug = match?.[1] || "desawer";
+  const year = Number(match?.[2] || new Date().getFullYear());
+  return { slug, year, isValid: Boolean(match) };
+}
+
+export async function generateMetadata({ params }) {
+  const resolvedParams = await params;
+  const { slug, year, isValid } = parseYearChartSlug(resolvedParams.slugYear || "");
+  const { game } = await getYearChartRows(slug, year);
+  const gameName = game?.name || slug.replace(/-/g, " ");
+  const canonicalSlug = `${slugify(gameName)}-result-chart-${year}`;
+  const isIndexable = isValid && Boolean(game?._id);
+
+  return {
+    title: `${gameName.toUpperCase()} Yearly Chart ${year} - Satta King 24`,
+    description: `Check ${gameName} yearly chart ${year} with date-wise Satta King old record, monthly history and updated result data.`,
+    alternates: { canonical: `/year-chart/${canonicalSlug}` },
+    robots: isIndexable ? { index: true, follow: true } : { index: false, follow: true }
+  };
+}
 
 function ResultText({ value }) {
   const result = value || "-";
@@ -11,9 +35,7 @@ function ResultText({ value }) {
 
 export default async function YearChartPage({ params }) {
   const resolvedParams = await params;
-  const match = decodeURIComponent(resolvedParams.slugYear).match(/^(.+)-result-chart-(\d{4})$/);
-  const slug = match?.[1] || "desawer";
-  const year = Number(match?.[2] || new Date().getFullYear());
+  const { slug, year } = parseYearChartSlug(resolvedParams.slugYear);
   const { rows, game } = await getYearChartRows(slug, year);
   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
