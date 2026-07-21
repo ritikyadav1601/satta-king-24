@@ -175,17 +175,15 @@ function GameBoard({ games }) {
   );
 }
 
-function PlayBlock({ ad, full = false }) {
-  const name = ad?.khaiwalName || DEFAULT_KHAIWAL_NAME;
-  const pay = ad?.gpayNumber || DEFAULT_CONTACT_NUMBER;
-  const whatsapp = normalizeWhatsAppNumber(ad?.whatsappNumber || DEFAULT_CONTACT_NUMBER);
+function PlayBlock({  full = false, whatsapp, name}) {
+
 
   return (
     <div id="kha" className="card-body sk24-khaiwal-card">
       {full ? (
         <div className="sk24-khaiwal-copy">
-          <p>बिंदास गेम प्ले कर सकते हो आप बिना किसी टेंशन के</p>
-          <p className="sk24-khaiwal-name">♕♕ VIRENDER BHAI KHAIWAL♕♕</p>
+          <p>--सीधे सट्टा कंपनी का No 1 खाईवाल--</p>
+          <p className="sk24-khaiwal-name">♕♕ {name} KHAIWAL♕♕</p>
           <div className="sk24-khaiwal-schedule">
             {khaiwalSchedule.map(([game, time]) => (
               <div className="sk24-khaiwal-row" key={game}>
@@ -195,26 +193,19 @@ function PlayBlock({ ad, full = false }) {
               </div>
             ))}
           </div>
-          <p className="sk24-khaiwal-payment">
-            💸 Payment Option 💸<br />
-            PAYTM//BANK TRANSFER//PHONE PAY//GOOGLE PAY =&gt;85293 57181
-          </p>
-          <p className="sk24-khaiwal-separator">
-            =====================================<br />
-            👉 👈<br />
-            =====================================
-          </p>
+          
           <p className="sk24-khaiwal-rate">
             🤑 Rate list 💸<br />
             जोड़ी रेट 10-------960<br />
-            <br />
             हरूफ रेट 100-----960
           </p>
-          <p className="sk24-khaiwal-name">♕♕ {name}♕♕</p>
         </div>
       ) : null}
       <p><strong>Game play करने के लिये नीचे लिंक पर क्लिक करे</strong></p>
-      <a href={`https://wa.me/918529357181`} className="Wbutton">
+      <a
+        href={`https://wa.me/${whatsapp}`}
+        className="Wbutton"
+      >
         <img loading="lazy" width="100%" src="/asset/whatsapp.png" alt="Whatsapp to Play Game" />
       </a>
     </div>
@@ -415,7 +406,12 @@ export default async function HomePage() {
           <ResultHighlight game={topGames[1]} />
         </div>
         {featured.map((game) => <FeaturedResult key={game._id} game={game} />)}
-        <PlayBlock ad={primaryAd} />
+        <PlayBlock 
+        ad={primaryAd} 
+        full
+        whatsapp="918529357181"
+        name='VIRENDER BHAI'
+        />
         <section className="grid grid-cols-1 gap-2 bg-white lg:grid-cols-1">
           <div className="text-center text-black px-4 py-2 shadow-xl bg-yellow-50 border pt-4 mx-2 my-2 rounded-xl leading-6 font-semibold h-fit px-0 mx-0 pt-2 py-2 leading-6 border-transparent rounded-none font-normal shadow none text-lg">
             <h3>To Check instant SATTA KING 24 Results, Check Below Chart 👇🏿</h3>
@@ -423,7 +419,10 @@ export default async function HomePage() {
         </section>
         <h3 className="py-2 text-sm font-semibold text-center text-gray-900 bg-white">FASTEST SATTA KING RESULT SITE ON INTERNET</h3>
         <GameBoard games={liveGames} />
-        <PlayBlock ad={primaryAd} full />
+        <PlayBlock ad={primaryAd} full 
+        whatsapp="919812105184"
+        name="PK BHAI"
+        />
         <MonthlyChartTable title={`Satta King Record Chart ${monthName(today)}`} rows={monthly.rows} columns={monthly.gameColumns} dateKey={today} chunkSize={4} />
         <SeoContent />
       </main>

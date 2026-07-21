@@ -621,7 +621,7 @@ select {
   align-items: baseline;
   color: #000;
   display: grid;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 900;
   grid-template-columns: auto minmax(34px, 1fr) auto;
   line-height: 1.35;
@@ -631,22 +631,14 @@ select {
 .sk24-khaiwal-dots {
   border-bottom: 2px dashed #000;
   margin: 0 5px 4px;
-  min-width: 34px;
+  min-width: 94px;
 }
 
-.sk24-khaiwal-payment {
-  margin-top: 22px;
-}
 
-.sk24-khaiwal-separator {
-  letter-spacing: 1px;
-  line-height: 1.7 !important;
-  margin-bottom: 22px !important;
-}
 
-.sk24-khaiwal-rate {
-  line-height: 1.7 !important;
-}
+
+
+
 
 .sk24-khaiwal-copy p:last-child {
   margin-bottom: 20px;
@@ -667,7 +659,7 @@ select {
   }
 
   .sk24-khaiwal-dots {
-    min-width: 18px;
+    min-width: 98px;
   }
 }
 
