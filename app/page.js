@@ -197,8 +197,10 @@ function PlayBlock({  full = false, whatsapp, name}) {
           <p className="sk24-khaiwal-rate">
             🤑 Rate list 💸<br />
             जोड़ी रेट 10-------960<br />
-            हरूफ रेट 100-----960
+            हरूफ रेट 100-----960 <br /><br />
+           ----------- {whatsapp} ------------
           </p>
+          
         </div>
       ) : null}
       <p><strong>Game play करने के लिये नीचे लिंक पर क्लिक करे</strong></p>
@@ -409,8 +411,8 @@ export default async function HomePage() {
         <PlayBlock 
         ad={primaryAd} 
         full
-        whatsapp="918529357181"
-        name='VIRENDER BHAI'
+        whatsapp="918950312367"
+        name="VP BHAI"
         />
         <section className="grid grid-cols-1 gap-2 bg-white lg:grid-cols-1">
           <div className="text-center text-black px-4 py-2 shadow-xl bg-yellow-50 border pt-4 mx-2 my-2 rounded-xl leading-6 font-semibold h-fit px-0 mx-0 pt-2 py-2 leading-6 border-transparent rounded-none font-normal shadow none text-lg">
@@ -420,8 +422,8 @@ export default async function HomePage() {
         <h3 className="py-2 text-sm font-semibold text-center text-gray-900 bg-white">FASTEST SATTA KING RESULT SITE ON INTERNET</h3>
         <GameBoard games={liveGames} />
         <PlayBlock ad={primaryAd} full 
-        whatsapp="918950312367"
-        name="VP BHAI"
+        whatsapp="918529357181"
+        name='VIRENDER BHAI'
         />
         <MonthlyChartTable title={`Satta King Record Chart ${monthName(today)}`} rows={monthly.rows} columns={monthly.gameColumns} dateKey={today} chunkSize={4} />
         <SeoContent />
