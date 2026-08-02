@@ -420,8 +420,8 @@ export default async function HomePage() {
         <h3 className="py-2 text-sm font-semibold text-center text-gray-900 bg-white">FASTEST SATTA KING RESULT SITE ON INTERNET</h3>
         <GameBoard games={liveGames} />
         <PlayBlock ad={primaryAd} full 
-        whatsapp="919812105184"
-        name="PK BHAI"
+        whatsapp="918950312367"
+        name="VP BHAI"
         />
         <MonthlyChartTable title={`Satta King Record Chart ${monthName(today)}`} rows={monthly.rows} columns={monthly.gameColumns} dateKey={today} chunkSize={4} />
         <SeoContent />

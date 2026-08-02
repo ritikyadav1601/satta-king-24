@@ -13,7 +13,13 @@ export default async function PublicLayout({ children, contact: providedContact 
         <nav className="border-gray-200 bg-gradient-to-br from-blue-400 to-pink-700">
           <div className="flex flex-wrap items-center justify-center p-2">
             <Link title="Satta King 7 Home" href="/">
-              <img className="block" alt="" src="/img/satta-king-24-logo.png" />
+              <img
+                className="block"
+                src="/img/satta-king-24-logo.png"
+                alt="Satta King 24 home"
+                width="150"
+                height="150"
+              />
             </Link>
           </div>
         </nav>
