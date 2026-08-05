@@ -7,6 +7,44 @@ export const metadata = {
   metadataBase: new URL(siteUrl),
   title: "Satta King 24 Fast Result Today | Live Chart & Leak Number",
   description: "Check Satta King result today fast and easy. Get Gali, Desawar, Faridabad live result, daily number update and full old chart in simple format.",
+  keywords: [
+    "Satta King Result",
+    "Satta King 24",
+    "Satta Result Today",
+    "Satta King Result Today",
+    "Satta King Fast Result",
+    "Gali Result",
+    "Desawar Result",
+    "Faridabad Result",
+    "Ghaziabad Result",
+    "Delhi Bazar Result",
+    "Delhi Metro Result",
+    "Shri Ganesh Result",
+    "Shiv Dham Result",
+    "Pushkar Bazar Result",
+    "Makka Madina Result",
+    "Kalka Night Result",
+    "Shirdi Dham Result",
+    "Shri Sayam Result",
+    "New Ganga Result",
+    "Gwalior Result",
+    "Fatehabad Result",
+    "Mathura Result",
+    "Alwar Result",
+    "Agra Result",
+    "Shakti Peeth Result",
+    "Satta King Chart"
+  ],
+  authors: [{ name: "Satta King 24", url: siteUrl }],
+  publisher: "Satta King 24",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true
+    }
+  },
   verification: {
     google: "7LwtpJQZkEJkLqgrpEWZop9h1cqLynVIjz7DEufuEXg"
   },

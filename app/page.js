@@ -142,7 +142,7 @@ function FeaturedResult({ game }) {
   return (
     <section className="bg-white">
       <div className="text-center">
-        <h3 className="pt-3 text-xl font-bold uppercase">{displayGameName(game.name)}</h3>
+        <p className="pt-3 text-xl font-bold uppercase">{displayGameName(game.name)}</p>
         <p className="py-2 text-xl text-gray-800"> {formatTime(game.resultTime)}</p>
         <div className="flex items-center justify-center">
           <strong className="text-4xl"><ResultText value={game.first} /> </strong>
@@ -387,7 +387,13 @@ export default async function HomePage() {
     getContact(),
     getGamesWithTodayResults()
   ]);
-  const primaryAd = ads[0] || {};
+  const legacyAd = ads.find((ad) => ad.website === "satta-king-24") || ads[0] || {};
+  const firstKhaiwal = ads.find((ad) => ad.website === "satta-king-24-1") || legacyAd;
+  const secondKhaiwal = ads.find((ad) => ad.website === "satta-king-24-2") || legacyAd;
+  const firstKhaiwalName = firstKhaiwal.khaiwalName || DEFAULT_KHAIWAL_NAME;
+  const firstKhaiwalContact = normalizeWhatsAppNumber(firstKhaiwal.whatsappNumber || firstKhaiwal.gpayNumber || DEFAULT_CONTACT_NUMBER);
+  const secondKhaiwalName = secondKhaiwal.khaiwalName || DEFAULT_KHAIWAL_NAME;
+  const secondKhaiwalContact = normalizeWhatsAppNumber(secondKhaiwal.whatsappNumber || secondKhaiwal.gpayNumber || DEFAULT_CONTACT_NUMBER);
   const liveGames = orderLikeLiveSite(games);
   const [monthly, topGames] = await Promise.all([
     getMonthlyRows({ untilToday: true, games: liveGames }),
@@ -409,21 +415,22 @@ export default async function HomePage() {
         </div>
         {featured.map((game) => <FeaturedResult key={game._id} game={game} />)}
         <PlayBlock 
-        ad={primaryAd} 
+        ad={firstKhaiwal} 
         full
-        whatsapp="918950312367"
-        name="VP BHAI"
+        whatsapp={firstKhaiwalContact}
+        name={firstKhaiwalName}
         />
         <section className="grid grid-cols-1 gap-2 bg-white lg:grid-cols-1">
           <div className="text-center text-black px-4 py-2 shadow-xl bg-yellow-50 border pt-4 mx-2 my-2 rounded-xl leading-6 font-semibold h-fit px-0 mx-0 pt-2 py-2 leading-6 border-transparent rounded-none font-normal shadow none text-lg">
-            <h3>To Check instant SATTA KING 24 Results, Check Below Chart 👇🏿</h3>
+            <h2>Satta King 24 Live Results | Fast & Accurate All Market Results
+            </h2>
           </div>
         </section>
-        <h3 className="py-2 text-sm font-semibold text-center text-gray-900 bg-white">FASTEST SATTA KING RESULT SITE ON INTERNET</h3>
+        <p className="py-2 text-sm font-semibold text-center text-gray-900 bg-white">FASTEST SATTA KING RESULT SITE ON INTERNET</p>
         <GameBoard games={liveGames} />
-        <PlayBlock ad={primaryAd} full 
-        whatsapp="918529357181"
-        name='VIRENDER BHAI'
+        <PlayBlock ad={secondKhaiwal} full 
+        whatsapp={secondKhaiwalContact}
+        name={secondKhaiwalName}
         />
         <MonthlyChartTable title={`Satta King Record Chart ${monthName(today)}`} rows={monthly.rows} columns={monthly.gameColumns} dateKey={today} chunkSize={4} />
         <SeoContent />
