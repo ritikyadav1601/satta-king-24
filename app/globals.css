@@ -782,6 +782,12 @@ select {
   word-break: break-word;
 }
 
+.blog-post p a {
+  color: #b45309;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 .blog-post blockquote {
   background: #fff8db;
   border-left: 4px solid #d97706;

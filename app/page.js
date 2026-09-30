@@ -259,6 +259,9 @@ function SeoContent() {
           a clean and organized layout.</p>
         <p>Visitors often continue exploring Ghaziabad and Delhi Bazar pages after visiting the
           Faridabad section.</p>
+        <p>For a detailed Faridabad record with year-wise old charts, visitors can also refer to{" "}
+          <a href="https://www.faridabadsatta.com/">FaridabadSatta.com</a>, a website dedicated
+          to Faridabad market information.</p>
 
         <h3>Ghaziabad Market Information</h3>
         <p>Ghaziabad remains among the most popular market categories available on the platform.
