@@ -1,5 +1,6 @@
 import "./globals.css";
 import Script from "next/script";
+import WhatsAppTracker from "@/components/WhatsAppTracker";
 
 const siteUrl = "https://www.satta-king-24.com";
 
@@ -74,9 +75,12 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/apple-icon.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
-      <body className="max-w-7xl mx-auto font-Roboto">{children}</body>
+      <body className="max-w-7xl mx-auto font-Roboto">
+        {children}
+        <WhatsAppTracker />
+      </body>
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-5WRYG71H1S"
+        src="https://www.googletagmanager.com/gtag/js?id=G-CJMJS6E8S7"
         strategy="afterInteractive"
       />
       <Script id="google-analytics" strategy="afterInteractive">
@@ -84,7 +88,7 @@ export default function RootLayout({ children }) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-5WRYG71H1S');
+          gtag('config', 'G-CJMJS6E8S7');
         `}
       </Script>
     </html>

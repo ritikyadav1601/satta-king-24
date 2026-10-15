@@ -1,102 +1,82 @@
 import { blogList } from "@/lib/blogData";
-import { shortMonthYear } from "@/lib/utils";
+import { getSitemapChartData } from "@/lib/data";
+import { shortMonthYear, slugify } from "@/lib/utils";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.satta-king-24.com";
-const startYear = 2022;
-const marketSlugs = [
-  "desawer",
-  "gali",
-  "ghaziabad",
-  "faridabad",
-  "delhi-bazar",
-  "shri-ganesh",
-  "shiv-dham",
-  "pushkar-bazar",
-  "delhi-metro",
-  "shri-sayam",
-  "kolmbia",
-  "makka-madina",
-  "kalka-night",
-  "shirdi-dham",
-  "sadar-bazar",
-  "delhi-darbar",
-  "kaliyar",
-  "gwalior",
-  "new-ganga",
-  "delhi-matka",
-  "agra",
-  "fatehabad",
-  "alwar",
-  "shakti-peeth",
-  "mandi-bazar",
-  "mathura",
-  "dwarka"
-];
+export const revalidate = 3600;
 
-function cleanSiteUrl(path = "") {
-  return `${siteUrl.replace(/\/$/, "")}${path}`;
-}
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.satta-king-24.com").replace(/\/$/, "");
 
-function sitemapEntry(path, lastModified, changeFrequency = "monthly", priority = 0.6) {
+function entry(path, lastModified, changeFrequency = "monthly", priority = 0.6) {
   return {
-    url: cleanSiteUrl(path),
-    lastModified,
+    url: `${siteUrl}${path}`,
+    lastModified: lastModified ? new Date(lastModified) : undefined,
     changeFrequency,
     priority
   };
 }
 
-function monthKeys(fromYear, toDate) {
-  const keys = [];
-  const endYear = toDate.getFullYear();
-  const endMonth = toDate.getMonth();
-
-  for (let year = fromYear; year <= endYear; year++) {
-    const monthLimit = year === endYear ? endMonth : 11;
-    for (let month = 0; month <= monthLimit; month++) {
-      keys.push(new Date(Date.UTC(year, month, 1)).toISOString().slice(0, 10));
-    }
-  }
-
-  return keys;
+function laterDate(a, b) {
+  if (!a) return b;
+  if (!b) return a;
+  return new Date(a) > new Date(b) ? a : b;
 }
 
-export default function sitemap() {
+export default async function sitemap() {
   const now = new Date();
-  const currentYear = now.getFullYear();
-  const months = monthKeys(startYear, now);
+  const currentMonth = now.toISOString().slice(0, 7);
 
   const urls = [
-    sitemapEntry("", now, "daily", 1),
-    sitemapEntry("/chart", now, "daily", 0.9),
-    sitemapEntry("/blogs", now, "weekly", 0.7),
-    sitemapEntry("/payment-proofs", now),
-    sitemapEntry("/disclaimer", now, "yearly", 0.4),
-    sitemapEntry("/about-us", now),
-    sitemapEntry("/privacy-policy", now, "yearly", 0.4),
-    sitemapEntry("/contact", now),
-    sitemapEntry("/faq", now)
+    entry("", now, "daily", 1),
+    entry("/chart", now, "daily", 0.9),
+    entry("/blogs", undefined, "weekly", 0.7),
+    entry("/payment-proofs", undefined),
+    entry("/disclaimer", undefined, "yearly", 0.4),
+    entry("/about-us", undefined),
+    entry("/privacy-policy", undefined, "yearly", 0.4),
+    entry("/contact", undefined),
+    entry("/faq", undefined)
   ];
 
   for (const post of blogList) {
-    urls.push(sitemapEntry(`/blogs/${post.slug}`, now, "monthly", 0.7));
+    urls.push(entry(`/blogs/${post.slug}`, undefined, "monthly", 0.7));
   }
 
-  for (const dateKey of months) {
-    const label = shortMonthYear(dateKey);
-    const isCurrentMonth = dateKey.slice(0, 7) === now.toISOString().slice(0, 7);
+  let chartData = [];
+  try {
+    chartData = await getSitemapChartData();
+  } catch (error) {
+    console.error("sitemap: could not load chart data", error);
+  }
 
-    urls.push(sitemapEntry(`/chart/result-chart-${label}`, now, isCurrentMonth ? "daily" : "monthly", 0.75));
+  const monthLastMod = new Map();
+  const yearLastMod = new Map();
 
-    for (const marketSlug of marketSlugs) {
-      urls.push(sitemapEntry(`/chart/${marketSlug}-result-chart-${label}`, now, isCurrentMonth ? "daily" : "monthly", 0.7));
+  for (const { gameName, month, lastModified } of chartData) {
+    const label = shortMonthYear(`${month}-01`);
+    const isCurrent = month === currentMonth;
+    const gameSlug = slugify(gameName);
+
+    // Per-game monthly chart (same slug format as the page's canonical URL)
+    urls.push(entry(`/chart/${gameSlug}-result-chart-${label}`, lastModified, isCurrent ? "daily" : "monthly", 0.7));
+
+    monthLastMod.set(month, laterDate(monthLastMod.get(month), lastModified));
+
+    // Year chart page only resolves when "name with dashes as spaces" matches the game name
+    if (gameSlug.replace(/-/g, " ") === String(gameName).trim().toLowerCase()) {
+      const key = `${gameSlug}|${month.slice(0, 4)}`;
+      yearLastMod.set(key, laterDate(yearLastMod.get(key), lastModified));
     }
   }
 
-  for (let year = startYear; year <= currentYear; year++) {
-    for (const marketSlug of marketSlugs) {
-      urls.push(sitemapEntry(`/year-chart/${marketSlug}-result-chart-${year}`, now, year === currentYear ? "daily" : "monthly", 0.7));
-    }
+  for (const [month, lastModified] of monthLastMod) {
+    const isCurrent = month === currentMonth;
+    urls.push(entry(`/chart/result-chart-${shortMonthYear(`${month}-01`)}`, lastModified, isCurrent ? "daily" : "monthly", 0.75));
+  }
+
+  for (const [key, lastModified] of yearLastMod) {
+    const [gameSlug, year] = key.split("|");
+    const isCurrent = year === currentMonth.slice(0, 4);
+    urls.push(entry(`/year-chart/${gameSlug}-result-chart-${year}`, lastModified, isCurrent ? "daily" : "monthly", 0.7));
   }
 
   return urls;

@@ -1391,3 +1391,113 @@ SEO CONTENT SECTION
   }
   }
   
+/* Top WhatsApp call-to-action (visible on first mobile screen) */
+.sk24-wa-cta {
+  padding: 8px 12px 4px;
+  text-align: center;
+}
+
+.sk24-wa-cta-btn {
+  align-items: center;
+  background: #25d366;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  color: #fff !important;
+  display: inline-flex;
+  font-size: 17px;
+  font-weight: 700;
+  gap: 10px;
+  justify-content: center;
+  line-height: 1.2;
+  max-width: 420px;
+  min-height: 48px;
+  padding: 10px 22px;
+  text-decoration: none !important;
+  width: 100%;
+}
+
+.sk24-wa-cta-btn:active {
+  transform: scale(0.98);
+}
+
+/* ===== Mobile: wide floating WhatsApp button centred at bottom, animated ===== */
+.wa-float-label {
+  display: none;
+}
+
+@keyframes wa-bounce {
+  0%, 60%, 100% { transform: translateY(0) scale(1); }
+  70% { transform: translateY(-8px) scale(1.04); }
+  80% { transform: translateY(0) scale(0.98); }
+  90% { transform: translateY(-3px) scale(1.01); }
+}
+
+/* alternating red and green rings expanding outside the button */
+@keyframes wa-ring {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.9), 0 0 0 0 rgba(37, 211, 102, 0), 0 4px 10px rgba(0, 0, 0, 0.25); }
+  45% { box-shadow: 0 0 0 18px rgba(239, 68, 68, 0), 0 0 0 0 rgba(37, 211, 102, 0), 0 4px 10px rgba(0, 0, 0, 0.25); }
+  50% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0), 0 0 0 0 rgba(37, 211, 102, 0.9), 0 4px 10px rgba(0, 0, 0, 0.25); }
+  95% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0), 0 0 0 18px rgba(37, 211, 102, 0), 0 4px 10px rgba(0, 0, 0, 0.25); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.9), 0 0 0 0 rgba(37, 211, 102, 0), 0 4px 10px rgba(0, 0, 0, 0.25); }
+}
+
+@keyframes wa-wiggle {
+  0%, 85%, 100% { transform: rotate(0deg); }
+  88% { transform: rotate(-14deg); }
+  91% { transform: rotate(12deg); }
+  94% { transform: rotate(-8deg); }
+  97% { transform: rotate(5deg); }
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 104px; /* keep footer links visible above the button */
+  }
+
+  #wa.floating {
+    width: max-content;
+    min-width: 250px;
+    max-width: calc(100vw - 32px);
+    height: 58px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    padding: 0 24px 0 18px;
+    gap: 10px;
+    border-radius: 999px;
+    border: 2px solid #fff;
+    z-index: 1000;
+    overflow: visible;
+    animation: wa-bounce 2.4s ease-in-out infinite, wa-ring 1.8s ease-out infinite;
+  }
+
+  #wa.floating img {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    animation: wa-wiggle 2.4s ease-in-out infinite;
+  }
+
+  #wa.floating .wa-float-label {
+    display: inline;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  #wa.floating:active {
+    animation: none;
+    transform: scale(0.96);
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  #wa.floating,
+  #wa.floating img {
+    animation: none;
+  }
+}
