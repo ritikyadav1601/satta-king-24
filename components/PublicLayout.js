@@ -1,8 +1,26 @@
 import Link from "next/link";
-import { FLOATING_WHATSAPP_NUMBER, FLOATING_WHATSAPP_TEXT } from "@/lib/contactDefaults";
+import { FLOATING_WHATSAPP_NUMBER, FLOATING_WHATSAPP_TEXT, normalizeWhatsAppNumber } from "@/lib/contactDefaults";
+import { getAds } from "@/lib/data";
+
+// Floating WhatsApp follows the FIRST khaiwal chart (website "satta-king-24-1").
+async function getFloatingContact() {
+  try {
+    const ads = await getAds();
+    const legacyAd = ads.find((ad) => ad.website === "satta-king-24") || ads[0] || {};
+    const firstKhaiwal = ads.find((ad) => ad.website === "satta-king-24-1") || legacyAd;
+    const number = firstKhaiwal.whatsappNumber || firstKhaiwal.gpayNumber;
+    return {
+      number: number ? normalizeWhatsAppNumber(number) : FLOATING_WHATSAPP_NUMBER,
+      text: firstKhaiwal.khaiwalName || FLOATING_WHATSAPP_TEXT
+    };
+  } catch {
+    return { number: FLOATING_WHATSAPP_NUMBER, text: FLOATING_WHATSAPP_TEXT };
+  }
+}
 
 export default async function PublicLayout({ children }) {
-  const floatingHref = `https://wa.me/${FLOATING_WHATSAPP_NUMBER}?text=${encodeURIComponent(FLOATING_WHATSAPP_TEXT)}`;
+  const floating = await getFloatingContact();
+  const floatingHref = `https://wa.me/${floating.number}?text=${encodeURIComponent(floating.text)}`;
 
   return (
     <>
