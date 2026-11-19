@@ -1501,3 +1501,9 @@ SEO CONTENT SECTION
     animation: none;
   }
 }
+
+/* Extra games board: keep yesterday → arrow → today on one row */
+#extra-games img.imggame {
+  display: inline-flex;
+  vertical-align: middle;
+}

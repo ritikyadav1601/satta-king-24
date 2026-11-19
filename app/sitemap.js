@@ -1,5 +1,6 @@
 import { blogList } from "@/lib/blogData";
 import { getSitemapChartData } from "@/lib/data";
+import { getExtraGamesList } from "@/lib/extraGames";
 import { shortMonthYear, slugify } from "@/lib/utils";
 
 export const revalidate = 3600;
@@ -77,6 +78,15 @@ export default async function sitemap() {
     const [gameSlug, year] = key.split("|");
     const isCurrent = year === currentMonth.slice(0, 4);
     urls.push(entry(`/year-chart/${gameSlug}-result-chart-${year}`, lastModified, isCurrent ? "daily" : "monthly", 0.7));
+  }
+
+  try {
+    const extraGames = await getExtraGamesList();
+    for (const game of extraGames) {
+      urls.push(entry(`/${game.slug}/satta-result-chart`, now, "daily", 0.7));
+    }
+  } catch (error) {
+    console.error("sitemap: could not load extra games", error);
   }
 
   return urls;

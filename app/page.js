@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Clock from "@/components/Clock";
 import MonthlyChartTable from "@/components/MonthlyChartTable";
+import ExtraGamesBoard from "@/components/ExtraGamesBoard";
 import PublicLayout from "@/components/PublicLayout";
 import { getAds, getContact, getGamesWithTodayResults, getMonthlyRows, getTopGames } from "@/lib/data";
 import { DEFAULT_CONTACT_NUMBER, DEFAULT_KHAIWAL_NAME, normalizeWhatsAppNumber } from "@/lib/contactDefaults";
+import { getExtraGamesWithResults } from "@/lib/extraGames";
 import { formatTime, istDate, monthName } from "@/lib/utils";
 
 export const revalidate = 1;
@@ -419,9 +421,10 @@ export default async function HomePage() {
   const secondKhaiwalName = secondKhaiwal.khaiwalName || DEFAULT_KHAIWAL_NAME;
   const secondKhaiwalContact = normalizeWhatsAppNumber(secondKhaiwal.whatsappNumber || secondKhaiwal.gpayNumber || DEFAULT_CONTACT_NUMBER);
   const liveGames = orderLikeLiveSite(games);
-  const [monthly, topGames] = await Promise.all([
+  const [monthly, topGames, extraGames] = await Promise.all([
     getMonthlyRows({ untilToday: true, games: liveGames }),
-    getTopGames(liveGames)
+    getTopGames(liveGames),
+    getExtraGamesWithResults(liveGames)
   ]);
   const featured = pickFeatured(liveGames);
   const today = istDate();
@@ -461,6 +464,7 @@ export default async function HomePage() {
           name={secondKhaiwalName}
         />
         <MonthlyChartTable title={`Satta King Record Chart ${monthName(today)}`} rows={monthly.rows} columns={monthly.gameColumns} dateKey={today} chunkSize={4} />
+        <ExtraGamesBoard games={extraGames} />
         <SeoContent />
       </main>
     </PublicLayout>
